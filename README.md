@@ -8,6 +8,7 @@ swift開発中に得た知識、思考を整理するためのリポジトリで
 参考文献
 - [Swiftフレームワークのまとめ【2022年版】](https://freelance-start.com/articles/75) 2022/03
 - [Swiftで使えるWEBフレームワーク7選！特徴や使い道まとめ](https://www.sejuku.net/blog/11112) 2021/10
+- [Swiftフレームワークおすすめ7選と選び方【2022】](https://freelance.techcareer.jp/skills/47/articles/18991/) 2022/10
 
 ## perfect
 
@@ -34,7 +35,7 @@ swift開発中に得た知識、思考を整理するためのリポジトリで
 
 - BluemixというIBM社のクラウド環境上で動作するWebアプリケーションやWebサーバーを開発することが可能
 - 発展途上、今後に期待
-
+- サーバーサイドでswiftを高速に動作させるために開発された
 ## Express
 
 - とにかく動作が速い
