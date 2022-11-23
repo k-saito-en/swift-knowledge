@@ -136,7 +136,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## UIButtonが押下時にボタンを半透明にする
+## UIButton押下時にボタンを半透明にする
 
 ```swift
 @IBAction func keyPressed(_ sender: UIButton) {
