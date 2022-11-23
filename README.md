@@ -99,6 +99,8 @@
 1. [Apple API Docs](https://developer.apple.com/documentation/technologies)で、調査結果のコードが何をするものなのかを解析
 1. アウトプットし、自分に必要な、最適な形に整形し実装
 
+実装してみた機能のアウトプット
+
 ## アプリでボタン押下時に音を再生する
 
 ```swift
