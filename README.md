@@ -1,5 +1,10 @@
-# swift-knowledge
-swift開発中に得た知識、思考を整理するためのリポジトリです
+# ここでやっていること
+## エラー解決・やりたいことの実現方法調査
+1. 原因不明のエラー・実装したいコードに遭遇　
+1. [StackOverflow](https://stackoverflow.com)　で調べる（英語の方が効率良さそう）
+1. バージョンを確認し、各得票数トップ３を比較
+1. [Apple API Docs](https://developer.apple.com/documentation/technologies)で、調査結果のコードが何をするものなのかを解析
+1. アウトプットし、自分に必要な、最適な形に整形し実装
 
 # フレームワーク
 
@@ -82,6 +87,18 @@ swift開発中に得た知識、思考を整理するためのリポジトリで
 
 # Apple Developer Docs
 
+## [AVAudioSession](https://developer.apple.com/documentation/avfaudio/avaudiosession/)
+
+### [func SetCategory](https://developer.apple.com/documentation/avfaudio/avaudiosession/1616583-setcategory)
+
+- AVリソースの定義、カテゴリーづけを行う
+
+例：.playbackで、重要度の高いAVリソースとしてマナーモードでも再生されるようにする▼
+```swift
+try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+try AVAudioSession.sharedInstance().setActive(true)
+```
+
 ## [AVFoundation](https://developer.apple.com/documentation/avfoundation/)
 
 - メディアを再生する
@@ -94,19 +111,5 @@ swift開発中に得た知識、思考を整理するためのリポジトリで
 ```swift:ViewController.swift
  func playSound() {
         guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else { return }
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-
-            guard let player = player else { return }
-
-            player.play()
-
-        } catch let error {
-            print(error.localizedDescription)
-        }
     }
 ```
