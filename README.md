@@ -86,3 +86,7 @@ swift開発中に得た知識、思考を整理するためのリポジトリで
 
 - メディアを再生する
 
+## [Bundle](https://developer.apple.com/documentation/foundation/bundle/)
+
+- ファイル内に含まれているリソースを参照するための定数コードのURLを作成してくれる。
+
