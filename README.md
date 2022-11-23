@@ -94,7 +94,7 @@
 
 エラー解決・やりたいことの実現方法調査
 1. 原因不明のエラー・実装したいコードに遭遇　
-1. [StackOverflow](https://stackoverflow.com)で調べる（英語の方が効率良さそう）
+1. [StackOverflow](https://stackoverflow.com)で調べる（英語の方が効率良さそう→英語圏のユーザーが大多数だから必然的に質問数も英語のものが多い）
 1. バージョンを確認し、獲得票数トップ３を比較
 1. [Apple API Docs](https://developer.apple.com/documentation/technologies)で、調査結果のコードが何をするものなのかを解析
 1. アウトプットし、自分に必要な、最適な形に整形し実装
