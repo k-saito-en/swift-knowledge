@@ -135,3 +135,16 @@ class ViewController: UIViewController {
     
 }
 ```
+
+## UIButtonが押下時にボタンを半透明にする
+
+```swift
+@IBAction func keyPressed(_ sender: UIButton) {
+        
+        playSound(soundName: sender.currentTitle!)
+        
+        //誰の.何を=どうする　押下情報が送られてきたボタンの色の濃さを半分にする
+        sender.alpha = 0.5
+        
+    }
+```
