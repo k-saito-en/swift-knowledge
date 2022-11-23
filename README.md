@@ -90,3 +90,23 @@ swift開発中に得た知識、思考を整理するためのリポジトリで
 
 - ファイル内に含まれているリソースを参照するための定数コードのURLを作成してくれる。
 
+例：同じプロジェクト内の音声リソース（C.wav）をURLに変換▼
+```swift:ViewController.swift
+ func playSound() {
+        guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else { return }
+
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+```
