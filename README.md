@@ -88,7 +88,7 @@
 
 ----------
 
-# Apple Developer Docs
+# 機能実装
 
 **ここでやっていること**
 
@@ -99,29 +99,39 @@
 1. [Apple API Docs](https://developer.apple.com/documentation/technologies)で、調査結果のコードが何をするものなのかを解析
 1. アウトプットし、自分に必要な、最適な形に整形し実装
 
-## [AVAudioSession](https://developer.apple.com/documentation/avfaudio/avaudiosession/)
+## アプリでボタン押下時に音を再生する
 
-### [func SetCategory](https://developer.apple.com/documentation/avfaudio/avaudiosession/1616583-setcategory)
-
-- AVリソースの定義、カテゴリーづけを行う
-
-例：.playbackで、重要度の高いAVリソースとしてマナーモードでも再生されるようにする▼
 ```swift
-try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-try AVAudioSession.sharedInstance().setActive(true)
-```
+import UIKit
+//AVリソースの処理詰め合わせキットのインポート
+import AVFoundation
 
-## [AVFoundation](https://developer.apple.com/documentation/avfoundation/)
-
-- メディアを再生する
-
-## [Bundle](https://developer.apple.com/documentation/foundation/bundle/)
-
-- ファイル内に含まれているリソースを参照するための定数コードのURLを作成してくれる。
-
-例：同じプロジェクト内の音声リソース（C.wav）をURLに変換▼
-```swift:ViewController.swift
- func playSound() {
-        guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else { return }
+class ViewController: UIViewController {
+    
+    //player変数にAV再生オブジェクトを格納
+    var player: AVAudioPlayer!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
     }
+    
+    @IBAction func keyPressed(_ sender: UIButton) {
+        
+        //押下されたボタンの名前を引数に関数呼び出し
+        playSound(soundName: sender.currentTitle!)
+        
+    }
+    //string型のsoundNameを受け取って、リソース名と照らし合わせて再生する関数
+    func playSound(soundName: String) {
+        //BundleでAVファイルをURLに変換
+        let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
+        //受け取ったURLから「AVプレーヤーを作成」する
+        player = try! AVAudioPlayer(contentsOf: url!)
+        //作成されたプレーヤーを起動する
+        player.play()
+        
+    }
+    
+}
 ```
