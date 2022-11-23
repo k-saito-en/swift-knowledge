@@ -1,16 +1,11 @@
-# ここでやっていること
-## エラー解決・やりたいことの実現方法調査
-1. 原因不明のエラー・実装したいコードに遭遇　
-1. [StackOverflow](https://stackoverflow.com)　で調べる（英語の方が効率良さそう）
-1. バージョンを確認し、各得票数トップ３を比較
-1. [Apple API Docs](https://developer.apple.com/documentation/technologies)で、調査結果のコードが何をするものなのかを解析
-1. アウトプットし、自分に必要な、最適な形に整形し実装
-
 # フレームワーク
 
-志望先企業がどんなフレームワーク使ってるか情報収集しておきたい
+**ここでやっていること**
 
-参考文献
+- 志望先企業がどんなフレームワーク使ってるか情報収集しておきたい
+- ポートフォリオアプリ作成のフレームワーク選定に役立てたい
+
+**参考文献**
 - [Swiftフレームワークのまとめ【2022年版】](https://freelance-start.com/articles/75) 2022/03
 - [Swiftで使えるWEBフレームワーク7選！特徴や使い道まとめ](https://www.sejuku.net/blog/11112) 2021/10
 - [Swiftフレームワークおすすめ7選と選び方【2022】](https://freelance.techcareer.jp/skills/47/articles/18991/) 2022/10
@@ -85,7 +80,18 @@
 - 拡張性と高いパフォーマンスであることやオートローディング時のページネーション、異なる方向へのページネーションもサポートしている
 - メッセージ用のセルと拡張可能な入力コンポーネントを含むChattoAdditionsという付属のフレームワークもある
 
+----------
+
 # Apple Developer Docs
+
+**ここでやっていること**
+
+エラー解決・やりたいことの実現方法調査
+1. 原因不明のエラー・実装したいコードに遭遇　
+1. [StackOverflow](https://stackoverflow.com)　で調べる（英語の方が効率良さそう）
+1. バージョンを確認し、各得票数トップ３を比較
+1. [Apple API Docs](https://developer.apple.com/documentation/technologies)で、調査結果のコードが何をするものなのかを解析
+1. アウトプットし、自分に必要な、最適な形に整形し実装
 
 ## [AVAudioSession](https://developer.apple.com/documentation/avfaudio/avaudiosession/)
 
