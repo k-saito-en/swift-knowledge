@@ -141,6 +141,7 @@ class ViewController: UIViewController {
 ## UIButton押下時に0.2秒だけボタンを半透明にする
 
 やっぱりkeyPressed関数内での実装で良かったんだ！
+
 調べるときにXcodeも検索クエリに含めないと「１から実装する方法」ばかり出てきた。。。
 
 ```swift
