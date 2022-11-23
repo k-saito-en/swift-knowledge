@@ -136,7 +136,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## UIButton押下時にボタンを半透明にする
+## UIButton押下時に0.2秒だけボタンを半透明にする
 
 ```swift
 @IBAction func keyPressed(_ sender: UIButton) {
@@ -145,6 +145,12 @@ class ViewController: UIViewController {
         
         //誰の.何を=どうする　押下情報が送られてきたボタンの色の濃さを半分にする
         sender.alpha = 0.5
+        
+         //ボタン背景が半透明になる時間を0.2秒に指定
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            //色の濃さを元に戻す
+            sender.alpha = 1.0
+        }
         
     }
 ```
