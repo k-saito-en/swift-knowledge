@@ -138,6 +138,53 @@ class ViewController: UIViewController {
     
 }
 ```
+## 乱数を生成する
+
+[Random Unification SE-0202](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md)がSwift 4.2で実装
+
+### 整数値、浮動小数点数値の乱数を生成する
+
+```swift
+func loveCalculator(){
+    
+    //引数で範囲の指定
+    Int.random(in: 0...100)
+    
+}
+```
+
+### 独自のRandomNumberGeneratorを作って使う
+
+```swift
+struct MyRNG: RandomNumberGenerator {
+    // RandomNumberGeneratorの実装
+}
+```
+```swift
+public protocol RandomNumberGenerator {
+
+    /// Returns a value from a uniform, independent distribution of binary data.
+    ///
+    /// - Returns: An unsigned 64-bit random value.
+    public mutating func next() -> UInt64
+}
+
+extension RandomNumberGenerator {
+
+    /// Returns a value from a uniform, independent distribution of binary data.
+    ///
+    /// - Returns: A random value of `T`. Bits are randomly distributed so that
+    ///   every value of `T` is equally likely to be returned.
+    public mutating func next<T>() -> T where T : FixedWidthInteger, T : UnsignedInteger
+
+    /// Returns a random value that is less than the given upper bound.
+    ///
+    /// - Parameter upperBound: The upper bound for the randomly generated value.
+    /// - Returns: A random value of `T` in the range `0..<upperBound`. Every
+    ///   value in the range `0..<upperBound` is equally likely to be returned.
+    public mutating func next<T>(upperBound: T) -> T where T : FixedWidthInteger, T : UnsignedInteger
+}
+```
 
 ## UIButton押下時に0.2秒だけボタンを半透明にする
 
