@@ -113,6 +113,7 @@ class ViewController: UIViewController {
     //player変数にAV再生オブジェクトを格納
     var player: AVAudioPlayer!
     
+    //viewがロードされた時の処理を記述
     override func viewDidLoad() {
         super.viewDidLoad()
         
