@@ -163,25 +163,16 @@ struct MyRNG: RandomNumberGenerator {
 ```swift
 public protocol RandomNumberGenerator {
 
-    /// Returns a value from a uniform, independent distribution of binary data.
-    ///
-    /// - Returns: An unsigned 64-bit random value.
+    //符号なし 64 ビットのランダム値を返す
     public mutating func next() -> UInt64
 }
 
 extension RandomNumberGenerator {
 
-    /// Returns a value from a uniform, independent distribution of binary data.
-    ///
-    /// - Returns: A random value of `T`. Bits are randomly distributed so that
-    ///   every value of `T` is equally likely to be returned.
+    //Tの範囲内の乱数を返す
     public mutating func next<T>() -> T where T : FixedWidthInteger, T : UnsignedInteger
 
-    /// Returns a random value that is less than the given upper bound.
-    ///
-    /// - Parameter upperBound: The upper bound for the randomly generated value.
-    /// - Returns: A random value of `T` in the range `0..<upperBound`. Every
-    ///   value in the range `0..<upperBound` is equally likely to be returned.
+    //T以下の乱数を返す
     public mutating func next<T>(upperBound: T) -> T where T : FixedWidthInteger, T : UnsignedInteger
 }
 ```
