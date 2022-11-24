@@ -186,6 +186,13 @@ extension RandomNumberGenerator {
 }
 ```
 
+そして作ったRandomNumberGeneratorを各関数のパラメーターに渡す。
+
+```swift
+var myRNG = MyRNG()
+let value = Int.random(in: 1 ..< 5, using: &myRNG)
+```
+
 ## UIButton押下時に0.2秒だけボタンを半透明にする
 
 やっぱりkeyPressed関数内での実装で良かったんだ！
