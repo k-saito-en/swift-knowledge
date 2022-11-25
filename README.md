@@ -138,7 +138,7 @@ class ViewController: UIViewController {
     
 }
 ```
-## 乱数を生成して、if-elseで表示文言分け
+## 乱数を生成して、switch if-elseで表示文言分け
 
 [Random Unification SE-0202](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md)がSwift 4.2で実装
 
@@ -147,6 +147,17 @@ class ViewController: UIViewController {
 ```swift
 func loveCalculator() {
     let loveScore = Int.random(in:  0...100)
+    
+    switch loveScore {
+    case 81...100:
+        print("You love each other like Kanye loves Kanye.")
+    case 41..<81:
+        print("You go togather like Coke and Mentos")
+    case ...40:
+        print("You'll be forever alone")
+    default:
+        print("Error lovescore is out of rabge.")
+    }
     
     if loveScore == 100 {
         print("You love each other like Kanye loves Kanye.")
