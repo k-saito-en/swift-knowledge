@@ -222,7 +222,7 @@ let value = Int.random(in: 1 ..< 5, using: &myRNG)
         
     }
 ```
-## UIButtonから取得した値別にカウントダウンタイマーを実装
+## UIButtonから取得した値から秒数別にカウントダウン
 ```swift
 import UIKit
 
