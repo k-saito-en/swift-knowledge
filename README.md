@@ -138,19 +138,24 @@ class ViewController: UIViewController {
     
 }
 ```
-## 乱数を生成する
+## 乱数を生成して、if-elseで表示文言分け
 
 [Random Unification SE-0202](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md)がSwift 4.2で実装
 
-### 整数値、浮動小数点数値の乱数を生成する
+### 整数の乱数を生成して、if-elseで表示文言分け
 
 ```swift
-func loveCalculator(){
+func loveCalculator() {
+    let loveScore = Int.random(in:  0...100)
     
-    //引数で範囲の指定
-    Int.random(in: 0...100)
-    
+    if loveScore == 100 {
+        print("You love each other like Kanye loves Kanye.")
+    }else{
+        print("You'll be forever alone")
+    }
 }
+
+loveCalculator()
 ```
 
 ### 独自のRandomNumberGeneratorを作って使う
