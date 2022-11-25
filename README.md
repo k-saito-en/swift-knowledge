@@ -224,66 +224,53 @@ let value = Int.random(in: 1 ..< 5, using: &myRNG)
 ```
 ## UIButtonから取得した値から秒数別にカウントダウン
 ## プログレスバーの実装
+
+自分で描いたコードの悪いところ
+- 可読性が低い
+  - 宣言、定義は種類ごとにまとめ、機能ごとの塊を意識する
+    宣言ブロック、機能実装ブロックに分類
+    
+リファクタリング後▼
 ```swift
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
-    
-//  卵の硬さ別の茹で時間を辞書に格納
-    let eggTimes = ["Soft" : 300 ,"Medium" : 420 ,"Hard" : 720]
-    
+    let eggTimes = ["Soft": 3, "Medium": 4, "Hard": 7]
     var timer = Timer()
-    
-//  Define a variable because I want to display the progress bar as a percentage later
+    var player: AVAudioPlayer!
     var totalTime = 0
-    var secondPassed = 0
+    var secondsPassed = 0
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
-
-        
-        
-//      Stop the running timer when the new timer starts
         timer.invalidate()
-        
-//      押したボタンのタイトルを取得　！で無理やり開封
         let hardness = sender.currentTitle!
-        
-//      設定した変数を硬さ別の残り時間に上書き　！で無理やり開封
         totalTime = eggTimes[hardness]!
-        
-//      Reset the progress bar and elapsed time when the timer ends
-        progressBar.progress = 0.0
-        secondPassed = 0
-        titleLabel.text = hardness
-        
-//      TimerクラスのscheduledTimerメソッド
-//      パラメータ
-//      timeInterval:カウント間隔
-//      selector:関数の名前を指定してtimeIntervalごとに実装内容を呼び出す
-//      repeats:タイマーを繰り返すかどうか　bool
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
-    }
-//  selectorはObjective-C由来なので@objcアノテーションが必要
-    @objc func updateTimer(){
-        
-        if secondPassed < totalTime{
-//          Since it is executed in order, the last 1 is not added unless it is written first
-            secondPassed += 1
-//          If you do not calculate with floating point numbers, they will be truncated
-            progressBar.progress = Float(secondPassed)/Float(totalTime)
 
-            secondPassed += 1
-        }else{
-//          When the countdown reaches 0, stop the timer and display "DONE!"
+        progressBar.progress = 0.0
+        secondsPassed = 0
+        titleLabel.text = hardness
+
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(updateTimer), userInfo:nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if secondsPassed < totalTime {
+            secondsPassed += 1
+            progressBar.progress = Float(secondsPassed) / Float(totalTime)
+            print(Float(secondsPassed) / Float(totalTime))
+        } else {
             timer.invalidate()
             titleLabel.text = "DONE!"
+            
+            let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
+            player = try! AVAudioPlayer(contentsOf: url!)
+            player.play()
         }
-        
     }
     
 }
