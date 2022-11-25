@@ -222,3 +222,38 @@ let value = Int.random(in: 1 ..< 5, using: &myRNG)
         
     }
 ```
+## UIButtonから取得した値別にカウントダウンタイマーを実装
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+    
+//  卵の硬さ別の茹で時間を辞書に格納
+    let eggTimes = ["Soft" : 300 ,"Medium" : 420 ,"Hard" : 720]
+    
+//  初期値は60秒
+    var secondsRemaining = 60
+    @IBAction func hardnessSelected(_ sender: UIButton) {
+        
+//        押したボタンのタイトルを取得　！で無理やり開封
+        let hardness = sender.currentTitle!
+        
+//        設定した変数を硬さ別の残り時間に上書き　！で無理やり開封
+        secondsRemaining = eggTimes[hardness]!
+//        TimerクラスのscheduledTimerメソッド
+//        パラメータ
+//        timeInterval:カウント間隔
+//        selector:関数の名前を指定してtimeIntervalごとに実装内容を呼び出す
+//        repeats:タイマーを繰り返すかどうか　bool
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+            
+    }
+//  selectorはObjective-C由来なので@objcアノテーションが必要
+    @objc func updateTimer(){
+        
+        if secondsRemaining > 0{
+            print("\(secondsRemaining) seconds.")
+            secondsRemaining -= 1
+        }
+    }
+```
