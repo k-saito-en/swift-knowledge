@@ -279,7 +279,7 @@ class ViewController: UIViewController {
 ## [QuizzlerApp](https://github.com/k-saito-en/QuizzlerApp)
 
 ### 学習
-- MVCモデルによるファイルごとの役割を明確に設計した開発
+- MVCモデルによるファイルごとの役割を明確に設計した開発、ハードコーディングの回避
 - 構造体の導入によるリファクタリング
   - mutating による構造体内定数の変更を伴う関数の定義方法
 - 返り値を伴う関数の定義方法、文法
