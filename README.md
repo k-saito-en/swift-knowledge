@@ -293,3 +293,16 @@ class ViewController: UIViewController {
   ```
   subtract(1, 0.9);       // -> 0.09999999999999998
   ```
+## [DestiniAPP](https://github.com/k-saito-en/DestiniAPP)
+
+### 学習
+- MVCアーキテクチャに準拠したコードにリファクタリングした。
+  - ViewController.swiftがハードコードになってしまっていたので、StoryBrain.swiftにリソースを全て集約、また、リソースを取り出すメソッドを記述。
+  ViewController.swiftにはあくまで取り出されたリソースを用いた処理の実装だけを記述した。
+  - storiesに要素を取り出すメソッド実装時、１つのメソッドで三種全てを取り出そうとしていたが、ここのメソッドに分けることにより「保守性の担保・責務の明確化」を実現した。
+  - storiesにchoiceDestinationプロパティで遷移先のstoryの配列番号を取得することにより、選択肢別のストーリー遷移を実現した。
+[7d189b9d91a5acbf3cf59e826982d05015b7d18f](https://github.com/k-saito-en/DestiniAPP/commit/7d189b9d91a5acbf3cf59e826982d05015b7d18f)
+
+### 気づいたこと
+- いまいちMVCアーキテクチャを理解しきれていなかった。「Model」にはあくまでリソースとそれらを取り出すメソッドを定義し、「Controller」では取り出されたリソースを使った処理のみを実装する
+- １つのメソッドで複数の戻り値を戻さないようにする。個々のメソッドの責務を明確にする
